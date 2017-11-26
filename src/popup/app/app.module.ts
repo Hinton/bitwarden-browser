@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { setAngularLib, UpgradeModule } from '@angular/upgrade/static';
 
+import { ActionButtonsDirective } from './components/action-buttons.component';
 import { CipherItemsComponent } from './components/cipher-items.component';
 import { IconComponent, IconDirective } from './components/icon.component';
+import { I18nService } from './services/i18n.service';
 import { StateService } from './services/state.service';
-import { ActionButtonsDirective } from './components/action-buttons.component';
 
 setAngularLib(angular);
 
@@ -26,6 +27,7 @@ setAngularLib(angular);
     ],
     providers: [
         StateService,
+        I18nService,
     ],
 })
 export class AppModule {

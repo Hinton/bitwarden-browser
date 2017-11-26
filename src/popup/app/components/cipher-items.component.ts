@@ -1,6 +1,7 @@
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Cipher } from '../../../models/domain/cipher';
+import { I18nService } from '../services/i18n.service';
 
 import * as template from './cipher-items.component.html';
 
@@ -17,8 +18,8 @@ export class CipherItemsComponent {
     @Output() onSelected = new EventEmitter<Cipher>();
     @Output() onView = new EventEmitter<Cipher>();
 
-    constructor() {
-        // this.i18n = i18nService;
+    constructor(i18nService: I18nService) {
+        this.i18n = i18nService.createInstance();
     }
 
     view(cipher: any) {
