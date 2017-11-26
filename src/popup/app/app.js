@@ -1,6 +1,10 @@
 require('clipboard');
 require('angular');
 
+import '../../polyfill';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
 require('angular-animate');
 const uiRouter = require('@uirouter/angularjs').default;
 require('angular-toastr');
@@ -125,10 +129,6 @@ require('./tools/toolsPasswordGeneratorHistoryController.js');
 // ref: https://github.com/angular/angular.js/issues/14240
 import { ActionButtonsController } from './components/action-buttons.component';
 ActionButtonsController.$$ngIsClass = true;
-import { CipherItemsController } from './components/cipher-items.component';
-CipherItemsController.$$ngIsClass = true;
-import { IconController } from './components/icon.component';
-IconController.$$ngIsClass = true;
 import { PopOutController } from './components/pop-out.component';
 PopOutController.$$ngIsClass = true;
 import { CurrentController } from './current/current.component';
@@ -142,7 +142,4 @@ PasswordGeneratorController.$$ngIsClass = true;
 import { ToolsController } from './tools/tools.component';
 ToolsController.$$ngIsClass = true;
 
-// Bootstrap the angular application
-angular.element(function () {
-    angular.bootstrap(document, ['bit']);
-});
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -1,12 +1,14 @@
 import * as angular from 'angular';
 import AuthService from './auth.service';
 import * as backgroundServices from './background.service';
-import StateService from './state.service';
+import { StateService } from './state.service';
 import { ValidationService } from './validation.service';
+
+import { downgradeInjectable } from '@angular/upgrade/static';
 
 export default angular
     .module('bit.services', ['toastr'])
-    .service('stateService', StateService)
+    .service('stateService', downgradeInjectable(StateService))
     .service('validationService', ValidationService)
     .service('authService', AuthService)
 

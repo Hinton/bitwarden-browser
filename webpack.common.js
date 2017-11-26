@@ -62,6 +62,10 @@ module.exports = {
         new CleanWebpackPlugin([
             path.resolve(__dirname, 'build/*')
         ]),
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core/,
+            path.resolve(__dirname, '../src')
+        ),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'popup/vendor',
             chunks: ['popup/app'],
@@ -96,7 +100,10 @@ module.exports = {
         ])
     ],
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            "@angular/upgrade/static": "@angular/upgrade/bundles/upgrade-static.umd.js"
+        }
     },
     output: {
         filename: '[name].js',

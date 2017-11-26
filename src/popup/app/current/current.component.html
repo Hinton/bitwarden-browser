@@ -36,7 +36,7 @@
             </div>
             <div class="list-section-items">
                 <cipher-items ng-if="$ctrl.cardCiphers.length"
-                              ciphers="$ctrl.cardCiphers"
+                              [ciphers]="$ctrl.cardCiphers"
                               on-view="$ctrl.viewCipher(cipher)"
                               on-selected="$ctrl.fillCipher(cipher)"
                               selection-title="$ctrl.i18n.autoFill">

@@ -1,13 +1,23 @@
+import { Component, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Cipher } from '../../../models/domain/cipher';
+
 import * as template from './cipher-items.component.html';
 
-export class CipherItemsController implements ng.IController {
-    onSelected: Function;
+@Component({
+    selector: 'cipher-items',
+    template,
+})
+export class CipherItemsComponent {
     onView: Function;
 
     i18n: any;
 
-    constructor(private i18nService: any) {
-        this.i18n = i18nService;
+    @Input() ciphers: Cipher[];
+    @Output() onSelected = new EventEmitter<Cipher>();
+
+    constructor() {
+        // this.i18n = i18nService;
     }
 
     view(cipher: any) {
@@ -15,10 +25,11 @@ export class CipherItemsController implements ng.IController {
     }
 
     select(cipher: any) {
-        return this.onSelected({cipher});
+        return this.onSelected.emit(cipher);
     }
 }
 
+/*
 export const CipherItemsComponent = {
     bindings: {
         ciphers: '<',
@@ -29,3 +40,4 @@ export const CipherItemsComponent = {
     controller: CipherItemsController,
     template,
 };
+*/

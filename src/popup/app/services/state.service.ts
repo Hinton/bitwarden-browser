@@ -1,16 +1,17 @@
-import { UtilsService } from '../../../services/abstractions/utils.service';
+import { Injectable } from '@angular/core';
 
-class StateService {
+@Injectable()
+export class StateService {
     private state: any = {};
 
-    constructor(private utilsService: UtilsService, private constantsService: any) {
+    constructor() {
     }
 
     async init() {
-        const faviconsDisabled = await this.utilsService
-            .getObjFromStorage<boolean>(this.constantsService.disableFaviconKey);
+        //const faviconsDisabled = await this.utilsService
+        //    .getObjFromStorage<boolean>(this.constantsService.disableFaviconKey);
 
-        this.saveState('faviconEnabled', !faviconsDisabled);
+        //this.saveState('faviconEnabled', !faviconsDisabled);
     }
 
     saveState(key: string, data: any) {
@@ -33,5 +34,3 @@ class StateService {
         this.state = {};
     }
 }
-
-export default StateService;
