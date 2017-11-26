@@ -9,35 +9,23 @@ import * as template from './cipher-items.component.html';
     template,
 })
 export class CipherItemsComponent {
-    onView: Function;
-
     i18n: any;
 
     @Input() ciphers: Cipher[];
+    @Input() selectionTitle: string;
+
     @Output() onSelected = new EventEmitter<Cipher>();
+    @Output() onView = new EventEmitter<Cipher>();
 
     constructor() {
         // this.i18n = i18nService;
     }
 
     view(cipher: any) {
-        return this.onView({cipher});
+        return this.onView.emit(cipher);
     }
 
     select(cipher: any) {
         return this.onSelected.emit(cipher);
     }
 }
-
-/*
-export const CipherItemsComponent = {
-    bindings: {
-        ciphers: '<',
-        selectionTitle: '<',
-        onSelected: '&',
-        onView: '&',
-    },
-    controller: CipherItemsController,
-    template,
-};
-*/

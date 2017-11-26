@@ -19,10 +19,10 @@
             </div>
             <div class="list-section-items" ng-class="{'list-no-selection': !$ctrl.loginCiphers.length}">
                 <cipher-items ng-if="$ctrl.loginCiphers.length"
-                              ciphers="$ctrl.loginCiphers"
-                              on-view="$ctrl.viewCipher(cipher)"
-                              on-selected="$ctrl.fillCipher(cipher)"
-                              selection-title="$ctrl.i18n.autoFill">
+                              [ciphers]="$ctrl.loginCiphers"
+                              (on-view)="$ctrl.viewCipher($event)"
+                              (on-selected)="$ctrl.fillCipher($event)"
+                              [selection-title]="$ctrl.i18n.autoFill">
                 </cipher-items>
                 <div class="list-section-item" ng-if="!$ctrl.loginCiphers.length">
                     <p>{{$ctrl.i18n.autoFillInfo}}</p>
@@ -37,9 +37,9 @@
             <div class="list-section-items">
                 <cipher-items ng-if="$ctrl.cardCiphers.length"
                               [ciphers]="$ctrl.cardCiphers"
-                              on-view="$ctrl.viewCipher(cipher)"
-                              on-selected="$ctrl.fillCipher(cipher)"
-                              selection-title="$ctrl.i18n.autoFill">
+                              (on-view)="$ctrl.viewCipher($event)"
+                              (on-selected)="$ctrl.fillCipher($event)"
+                              [selection-title]="$ctrl.i18n.autoFill">
                 </cipher-items>
             </div>
         </div>

@@ -7,6 +7,7 @@ import { setAngularLib, UpgradeModule } from '@angular/upgrade/static';
 import { CipherItemsComponent } from './components/cipher-items.component';
 import { IconComponent, IconDirective } from './components/icon.component';
 import { StateService } from './services/state.service';
+import { ActionButtonsDirective } from './components/action-buttons.component';
 
 setAngularLib(angular);
 
@@ -18,6 +19,7 @@ setAngularLib(angular);
     declarations: [
         CipherItemsComponent,
         IconDirective,
+        ActionButtonsDirective,
     ],
     entryComponents: [
         CipherItemsComponent,

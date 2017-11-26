@@ -1,7 +1,30 @@
-import * as template from './action-buttons.component.html';
-
 import { UtilsService } from '../../../services/abstractions/utils.service';
 
+import * as template from './action-buttons.component.html';
+
+import { Directive, ElementRef, Injector } from '@angular/core';
+import { UpgradeComponent } from '@angular/upgrade/static';
+
+@Directive({
+    selector: 'action-buttons',
+    inputs: [
+        'cipher',
+        'showView',
+    ],
+    outputs: [
+        'onView',
+    ],
+})
+export class ActionButtonsDirective extends UpgradeComponent {
+
+    static $inject = ['ElementRef', 'Injector'];
+
+    constructor(elementRef: ElementRef, injector: Injector) {
+        super('actionButtons', elementRef, injector);
+    }
+}
+
+// tslint:disable-next-line:max-classes-per-file
 export class ActionButtonsController implements ng.IController {
     onView: Function;
 

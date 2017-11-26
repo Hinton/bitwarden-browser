@@ -1,11 +1,18 @@
 ﻿<a href="#" stop-click (click)="select(cipher)" class="list-section-item condensed"
-   title="selectionTitle" *ngFor="let cipher of ciphers; trackBy $index">
-    <!--<action-buttons cipher="cipher" show-view="true" on-view="$ctrl.view(cipher)"></action-buttons>-->
+   [title]="selectionTitle" *ngFor="let cipher of ciphers; trackBy $index">
+ 
+   <action-buttons [cipher]="cipher"
+                    [showView]="true"
+                    (onView)="view($event)">
+    </action-buttons>
+
     <icon [cipher]="cipher"></icon>
+
     <span class="text">
         {{cipher.name}}
         <i class="fa fa-share-alt text-muted" ng-if="cipher.organizationId" title="i18n.shared"></i>
         <i class="fa fa-paperclip text-muted" ng-if="cipher.attachments" title="i18n.attachments"></i>
     </span>
+
     <span class="detail">{{cipher.subTitle}}</span>
 </a>
