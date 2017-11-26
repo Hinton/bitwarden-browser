@@ -1,10 +1,12 @@
 import * as angular from 'angular';
 
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { downgradeComponent } from '@angular/upgrade/static';
 
-import { ActionButtonsComponent } from './action-buttons.component';
+import { ActionButtonsComponent, ActionButtonsDirective } from './action-buttons.component';
 import { CipherItemsComponent } from './cipher-items.component';
-import { IconComponent } from './icon.component';
+import { IconComponent, IconDirective } from './icon.component';
 import { PopOutComponent } from './pop-out.component';
 
 export default angular
@@ -16,3 +18,21 @@ export default angular
     .component('actionButtons', ActionButtonsComponent)
     .component('popOut', PopOutComponent)
     .name;
+
+@NgModule({
+    imports: [
+        CommonModule,
+    ],
+    declarations: [
+        CipherItemsComponent,
+        IconDirective,
+        ActionButtonsDirective,
+    ],
+    entryComponents: [
+        CipherItemsComponent,
+    ],
+    providers: [
+    ],
+})
+export class ComponentsModule {
+}
