@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 import { CryptoService } from '../../../services/abstractions/crypto.service';
+import { UtilsService } from '../../../services/abstractions/utils.service';
 import { UtilsService } from '../../../services/abstractions/utils.service';
 
 function getBackgroundService<T>(service: string) {
@@ -27,3 +28,13 @@ export const lockService = getBackgroundService<any>('lockService');
 export const totpService = getBackgroundService<any>('totpService');
 export const environmentService = getBackgroundService<any>('environmentService');
 export const collectionService = getBackgroundService<any>('collectionService');
+
+const utilsServiceFactory = () => {
+    return utilsService();
+};
+
+export const utilsServiceProvider = {
+    provide: UtilsService,
+    useFactory: utilsServiceFactory,
+    deps: Array<any>(),
+};

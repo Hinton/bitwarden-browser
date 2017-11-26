@@ -8,6 +8,7 @@ import { ActionButtonsDirective } from './components/action-buttons.component';
 import { CipherItemsComponent } from './components/cipher-items.component';
 import { ComponentsModule } from './components/components.module';
 import { IconComponent, IconDirective } from './components/icon.component';
+import { utilsServiceProvider } from './services/background.service';
 import { I18nService } from './services/i18n.service';
 import { StateService } from './services/state.service';
 
@@ -22,6 +23,7 @@ setAngularLib(angular);
     declarations: [],
     entryComponents: [],
     providers: [
+        utilsServiceProvider,
         StateService,
         I18nService,
     ],
